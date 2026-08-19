@@ -1,6 +1,6 @@
 import { CanActivateFn, Router } from '@angular/router';
 import { inject } from '@angular/core';
-import { Auth } from '../services/auth';
+import { Auth } from '../services/auth/auth';
 import { catchError, map, of } from 'rxjs';
 
 
@@ -16,24 +16,4 @@ export const authGuard: CanActivateFn = () => {
     map(() => true ),
     catchError(() => of(router.createUrlTree(['/login'])))
   );
-
-  // return auth.checkSession()
-  //   .pipe(
-  //     map(session => {
-
-  //       if(route.routeConfig?.path === 'login')
-  //         return router.createUrlTree(['/home']);
-
-  //       return true;
-  //     }),
-
-  //     catchError(err => {
-
-  //       if(route.routeConfig?.path === 'login')
-  //         return of(true)
-
-  //       console.log(`SESSION ERROR: ${err.status}`);
-  //       return of(router.createUrlTree(['/login']));
-  //     })
-  //   );
 };

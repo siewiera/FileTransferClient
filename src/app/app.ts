@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Login } from './features/loginUser/loginUser';
+import { Login } from './features/login/loginUser';
 
 
 @Component({

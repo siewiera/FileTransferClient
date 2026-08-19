@@ -1,12 +1,13 @@
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { Auth } from '../../core/services/auth';
+import { Auth } from '../../core/services/auth/auth';
 import { FormsModule } from "@angular/forms";
+import { MyUserComponent } from './components/users/my-user/my-user';
 
 
 @Component({
   selector: 'app-home',
-  imports: [ FormsModule ],
+  imports: [ FormsModule, MyUserComponent ],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })

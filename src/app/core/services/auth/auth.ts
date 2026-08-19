@@ -1,11 +1,12 @@
 import { Service, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../../environments/environment';
 
 @Service()
 export class Auth 
 {
     private http = inject(HttpClient);
-    private apiUserUrl = 'http://localhost:5264/api/fileTransfer';
+    private apiUserUrl = environment.apiUserUrl;
 
     login(username: string, password: string)
     {
@@ -15,8 +16,8 @@ export class Auth
                 password
             },
             {
-                withCredentials: true,
-                observe: 'response'
+                withCredentials: true
+                // observe: 'response'
             }
         );
     }

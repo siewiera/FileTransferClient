@@ -1,0 +1,20 @@
+<div class="my-user">
+  @if (myUser) {
+    <div class="user-info">
+      <span class="username">
+        {{ myUser.username }}
+      </span>
+      <span class="role">
+        @if(myUser.userRole === UserRole.Admin)
+        {
+          Administrator
+        }
+
+        @if(myUser.userRole === UserRole.User)
+        {
+          Użytkownik
+        }
+      </span>
+    </div>
+  }
+</div>
