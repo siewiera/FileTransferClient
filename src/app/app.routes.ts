@@ -3,6 +3,7 @@ import { Login } from './features/login/loginUser';
 import { Home } from './features/dashboard/home';
 import { authGuard } from './core/guards/auth-guard';
 import { guestGuard } from './core/guards/guest-guard';
+import { Register } from './features/register/register';
 
 
 export const routes: Routes = 
@@ -11,6 +12,10 @@ export const routes: Routes =
         path: 'login',
         component: Login,
         canActivate: [guestGuard]
+    },
+    {
+        path: 'register',
+        component: Register
     },
     {
         path: 'home',

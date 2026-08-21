@@ -22,7 +22,6 @@ export class Home
     .subscribe({
       next: response => 
       {
-        console.log('LOGOUT OK', response);
         this.router.navigate(['/login']);
       },
   

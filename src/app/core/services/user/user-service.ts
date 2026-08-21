@@ -3,15 +3,15 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../environments/environment';
 import { MyUser } from '../../models/my-user';
 import { UserRole } from '../../models/enums/user-role';
-import { map } from 'rxjs';
+import { map, Observable } from 'rxjs';
 
 @Service()
 export class UserService 
 {
     private http = inject(HttpClient);
     private apiUserUrl = environment.apiUserUrl;
-
-    geMyUser()
+    
+    getMyUser()
     {
         return this.http.get<MyUser>(`${this.apiUserUrl}/user/myUser`,
             {

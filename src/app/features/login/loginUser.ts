@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { inject } from '@angular/core';
 import { Auth } from '../../core/services/auth/auth';
 import { FormsModule } from "@angular/forms";
 
 @Component({
   selector: 'app-login',
-  imports: [ FormsModule ],
+  imports: [ FormsModule, RouterLink ],
   standalone: true,
   templateUrl: './loginUser.html',
   styleUrl: './loginUser.scss',

@@ -17,7 +17,6 @@ export class Auth
             },
             {
                 withCredentials: true
-                // observe: 'response'
             }
         );
     }
