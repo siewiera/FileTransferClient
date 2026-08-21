@@ -2,8 +2,6 @@ import { Component, inject, Inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RegisterService } from '../../core/services/register/register-service';
 import { Router } from '@angular/router';
-import { UserRole } from '../../core/models/enums/user-role';
-import { error } from 'node:console';
 
 @Component({
   selector: 'app-register',

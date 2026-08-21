@@ -15,7 +15,8 @@ export const routes: Routes =
     },
     {
         path: 'register',
-        component: Register
+        component: Register,
+        canActivate: [guestGuard]
     },
     {
         path: 'home',
@@ -23,8 +24,8 @@ export const routes: Routes =
         canActivate: [authGuard]
     },
     {
-        path: '',
-        redirectTo: 'login',
-        pathMatch: 'full'
-    },
+        path: '**',
+        canActivate: [authGuard],
+        component: Home
+    }
 ];

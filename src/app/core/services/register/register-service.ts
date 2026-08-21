@@ -24,10 +24,10 @@ export class RegisterService
                 password,
                 email
             },
-            {
-                // withCredentials: true,
-                responseType: 'text'
-            }
+            // {
+            //     // withCredentials: true,
+            //     responseType: 'text'
+            // }
         );
     }
 }
