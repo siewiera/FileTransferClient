@@ -15,6 +15,7 @@ export class Login
 {
   private auth = inject(Auth);
   private router = inject(Router);
+  showActivationLink = false;
 
   username = '';
   password = '';
@@ -32,13 +33,24 @@ export class Login
   
       error: err => {
 
-        if(err.status == 403)
-          this.router.navigate(['/home']);
+        if(err.status === 409)
+          this.router.navigate(['/home']); //juz zalogowany
+        else if (err.status === 403) {
+          this.showActivationLink = true;
+          console.log('showActivationLink:', this.showActivationLink);
+        }
+        else
+          this.showActivationLink = false;
   
         console.log(err.status);           // np. 401
         console.log(err.error);            // body błędu
   
       }
     });
+  }
+
+  goToActivation()
+  {
+    this.router.navigate([`/activate-account-user`]);
   }
 }

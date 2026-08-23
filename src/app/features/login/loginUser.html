@@ -22,3 +22,20 @@
 <a routerLink="/register">
   Nie masz konta? Zarejestruj się
 </a>
+
+<p>
+  DEBUG: {{ showActivationLink }}
+</p>
+
+@if (showActivationLink) {
+  <div class="activation-hint">
+    <span>Twoje konto nie zostało jeszcze aktywowane.</span>
+
+    <button
+      type="button"
+      class="activation-link"
+      (click)="goToActivation()">
+      Wyślij nowy kod aktywacyjny
+    </button>
+  </div>
+}

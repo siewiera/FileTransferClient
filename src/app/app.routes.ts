@@ -4,6 +4,7 @@ import { Home } from './features/dashboard/home';
 import { authGuard } from './core/guards/auth-guard';
 import { guestGuard } from './core/guards/guest-guard';
 import { Register } from './features/register/register';
+import { ActivateAccountUser } from './features/activateAccount/activate-account-user/activate-account-user';
 
 
 export const routes: Routes = 
@@ -16,6 +17,11 @@ export const routes: Routes =
     {
         path: 'register',
         component: Register,
+        canActivate: [guestGuard]
+    },
+    {
+        path: 'activate-account-user',
+        component: ActivateAccountUser,
         canActivate: [guestGuard]
     },
     {

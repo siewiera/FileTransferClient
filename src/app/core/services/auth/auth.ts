@@ -31,7 +31,6 @@ export class Auth
             });
     }
 
-
     checkSession()
     {
         return this.http.get(`${this.apiUserUrl}/userSession/check`,
@@ -40,5 +39,19 @@ export class Auth
                 responseType: "text"
             }
         );
+    }
+
+    resendActivationToken(email: string, type: number)
+    {
+        return this.http.post(`${this.apiUserUrl}/token/generate`,
+            { 
+                email, 
+                type 
+            },
+            {
+                withCredentials: true,
+                responseType: "text"
+            }
+        )
     }
 }
