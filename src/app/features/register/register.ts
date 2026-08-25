@@ -16,10 +16,14 @@ export class Register
 
   username = '';
   password = '';
+  passwordRepeated = '';
   email = '';
 
   register()
   {
+    if(this.password != this.passwordRepeated)
+      return;
+    
     this.registerService
       .register(this.username, this.password, this.email)
       .subscribe

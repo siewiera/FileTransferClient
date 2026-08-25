@@ -23,14 +23,16 @@
   Nie masz konta? Zarejestruj się
 </a>
 
-<p>
-  DEBUG: {{ showActivationLink }}
-</p>
-
-@if (showActivationLink) {
+<!-- <p>
+  DEBUG: {{ showActivationLink() }}
+</p> -->
+<br>
+<br>
+@if (showActivationLink()) {
   <div class="activation-hint">
     <span>Twoje konto nie zostało jeszcze aktywowane.</span>
-
+    <br>
+    <br>
     <button
       type="button"
       class="activation-link"

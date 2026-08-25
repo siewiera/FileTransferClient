@@ -24,7 +24,6 @@ export class MyUserComponent implements OnInit
           { 
             this.myUser.set(myUser),
             this.isAdmin.set(myUser.userRole === UserRole.Admin);
-            console.log(`ngOnInit w MyUserComponent: myUser= ${this.myUser()?.username}, isAdmin= ${this.isAdmin()}`)
           },
         error: err => console.log('GET USER ERROR:', err)
       });

@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, signal, inject } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import { inject } from '@angular/core';
 import { Auth } from '../../core/services/auth/auth';
 import { FormsModule } from "@angular/forms";
 
@@ -15,7 +14,7 @@ export class Login
 {
   private auth = inject(Auth);
   private router = inject(Router);
-  showActivationLink = false;
+  showActivationLink = signal(false);
 
   username = '';
   password = '';
@@ -36,11 +35,11 @@ export class Login
         if(err.status === 409)
           this.router.navigate(['/home']); //juz zalogowany
         else if (err.status === 403) {
-          this.showActivationLink = true;
+          this.showActivationLink.set(true);
           console.log('showActivationLink:', this.showActivationLink);
         }
         else
-          this.showActivationLink = false;
+          this.showActivationLink.set(false);
   
         console.log(err.status);           // np. 401
         console.log(err.error);            // body błędu

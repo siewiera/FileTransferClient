@@ -18,7 +18,7 @@ export class ActivateAccountUser
 
   resendToken()
   {
-    this.auth.resendActivationToken(this.email, 1).subscribe
+    this.auth.resendActivationToken(this.email).subscribe
     (
       {
         next: () => this.router.navigate(['/login']),     

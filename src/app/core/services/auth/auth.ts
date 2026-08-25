@@ -41,15 +41,13 @@ export class Auth
         );
     }
 
-    resendActivationToken(email: string, type: number)
+    resendActivationToken(email: string)
     {
-        return this.http.post(`${this.apiUserUrl}/token/generate`,
+        return this.http.post(`${this.apiUserUrl}/accountManager/accountActivation`,
             { 
-                email, 
-                type 
+                email
             },
             {
-                withCredentials: true,
                 responseType: "text"
             }
         )
