@@ -2,6 +2,7 @@ import { Component, signal, inject } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { Auth } from '../../core/services/auth/auth';
 import { FormsModule } from "@angular/forms";
+import { NotyficationService } from '../../core/services/notification/notyfication-service';
 
 @Component({
   selector: 'app-login',
@@ -14,6 +15,7 @@ export class Login
 {
   private auth = inject(Auth);
   private router = inject(Router);
+  private readonly notificationService = inject(NotyficationService);
   showActivationLink = signal(false);
 
   username = '';
@@ -27,11 +29,12 @@ export class Login
       next: response => 
       {
         this.router.navigate(['/home']);
-  
       },
   
       error: err => {
-
+        this.notificationService.error('Error')
+        // this.notificationService.success('Success')
+        // this.notificationService.info('Info')
         if(err.status === 409)
           this.router.navigate(['/home']); //juz zalogowany
         else if (err.status === 403) {

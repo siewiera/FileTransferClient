@@ -25,7 +25,7 @@ export class RegisterService
                 email
             },
             {
-                withCredentials: true,
+                // withCredentials: true,
                 responseType: 'text'
             }
         );
