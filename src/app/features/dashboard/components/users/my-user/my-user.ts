@@ -2,6 +2,7 @@ import { UserService } from '../../../../../core/services/user/user-service';
 import { MyUser } from './../../../../../core/models/my-user';
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { UserRole } from '../../../../../core/models/enums/user-role';
+import { NotyficationService } from '../../../../../core/services/notification/notyfication-service';
 
 @Component({
   selector: 'app-my-user',
@@ -15,6 +16,7 @@ export class MyUserComponent implements OnInit
   protected myUser = signal<MyUser | undefined>(undefined);
   protected isAdmin = signal(false);
   protected readonly UserRole = UserRole;
+  private readonly notificationService = inject(NotyficationService)
 
   ngOnInit()
   {
@@ -25,7 +27,7 @@ export class MyUserComponent implements OnInit
             this.myUser.set(myUser),
             this.isAdmin.set(myUser.userRole === UserRole.Admin);
           },
-        error: err => console.log('GET USER ERROR:', err)
+        error: err => this.notificationService.error(err.error)
       });
   }
 

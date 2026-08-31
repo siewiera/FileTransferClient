@@ -52,45 +52,39 @@ $background-noticifation: white;
 
 .mat-mdc-snack-bar-container.notification-success
   .mat-mdc-snackbar-surface {
-  background-color: #2e7d32 !important;
+  background-color: $success-color !important;
   color: #ffffff !important;
 }
 
 .mat-mdc-snack-bar-container.notification-error
   .mat-mdc-snackbar-surface {
-  // background-color: #c62828 !important;
-  // color: #ffffff !important;
-  background-color: $error-color-background;
-  box-shadow: 0px 0px 0px 5px $error-color inset;
-  color: $error-color;
+  background-color: $error-color !important;
+  color: #ffffff !important;
 }
 
 .mat-mdc-snack-bar-container.notification-warning
   .mat-mdc-snackbar-surface {
-  background-color: #ed6c02 !important;
+  background-color: $warning-color !important;
   color: #000000 !important;
 }
 
 .mat-mdc-snack-bar-container.notification-info
   .mat-mdc-snackbar-surface {
-  // background-color: #1565c0 !important;
-  // color: #ffffff !important;
-  color: #1565c0 !important;
-  box-shadow: 0px 0px 0px 5px #1565c0 inset;
-  background-color: white !important;
+  background-color: $info-color !important;
+  color: #ffffff !important;
 }
 
-// .mat-mdc-snack-bar-container.notification-success,
-// .mat-mdc-snack-bar-container.notification-error,
-// .mat-mdc-snack-bar-container.notification-warning,
-// .mat-mdc-snack-bar-container.notification-info {
-//   .mdc-snackbar__label {
-//     color: #ffffff !important;
-//   }
+.mat-mdc-snack-bar-container.notification-success,
+.mat-mdc-snack-bar-container.notification-error,
+.mat-mdc-snack-bar-container.notification-warning,
+.mat-mdc-snack-bar-container.notification-info {
+  .mdc-snackbar__label {
+    color: #ffffff !important;
+  }
 
-//   .mat-mdc-snack-bar-action {
-//     color: #ffffff !important;
-//   }
-// }
+  .mat-mdc-snack-bar-action {
+    color: #ffffff !important;
+  }
+}
 
 /* You can add global styles to this file, and also import other style files */

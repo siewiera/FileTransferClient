@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Auth } from '../../core/services/auth/auth';
 import { FormsModule } from "@angular/forms";
 import { MyUserComponent } from './components/users/my-user/my-user';
+import { NotyficationService } from '../../core/services/notification/notyfication-service';
 
 
 @Component({
@@ -15,6 +16,8 @@ export class Home
 {
   private auth = inject(Auth);
   private router = inject(Router);
+  private readonly notificationService = inject(NotyficationService);
+
 
   logout()
   {
@@ -22,11 +25,11 @@ export class Home
     .subscribe({
       next: response => 
       {
+        this.notificationService.info('You will be logged out.')
         this.router.navigate(['/login']);
       },
-  
       error: err => {
-        console.log('LOGOUT ERROR');
+        this.notificationService.error(err.error)
         console.log(err.status);
         console.log(err.error);
       }

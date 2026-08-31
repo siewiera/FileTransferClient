@@ -26,27 +26,32 @@ export class Login
     this.auth.login( this.username, this.password )
     .subscribe(
     {
-      next: response => 
+      next:() =>
       {
+        this.notificationService.success(String('Logged in'))
         this.router.navigate(['/home']);
       },
   
       error: err => {
-        this.notificationService.error('Error')
-        // this.notificationService.success('Success')
-        // this.notificationService.info('Info')
-        if(err.status === 409)
-          this.router.navigate(['/home']); //juz zalogowany
-        else if (err.status === 403) {
-          this.showActivationLink.set(true);
-          console.log('showActivationLink:', this.showActivationLink);
+        if (err.status === 400 && err.error?.errors) 
+        {
+          const validationErrors = err.error.errors;
+          return Object.values(validationErrors)
+            .flat()
+            .forEach(message => {
+              this.notificationService.error(String(message));
+            });
         }
+        else if (err.status === 403) 
+          this.showActivationLink.set(true);
         else
           this.showActivationLink.set(false);
-  
+          
+        this.notificationService.error(String(err.error));
+        
         console.log(err.status);           // np. 401
         console.log(err.error);            // body błędu
-  
+
       }
     });
   }
