@@ -1,4 +1,4 @@
-import { Component, signal, inject } from '@angular/core';
+import { Component, signal, inject, ElementRef, ViewChild } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { Auth } from '../../core/services/auth/auth';
 import { FormsModule } from "@angular/forms";
@@ -18,8 +18,15 @@ export class Login
   private readonly notificationService = inject(NotyficationService);
   showActivationLink = signal(false);
 
+
+
+@ViewChild('loginCard')
+  loginCard!: ElementRef<HTMLDivElement>;
+
   username = '';
   password = '';
+  rememberMe = false;
+  showPassword = false;
   
   login()
   {
@@ -43,7 +50,10 @@ export class Login
             });
         }
         else if (err.status === 403) 
+        {
           this.showActivationLink.set(true);
+          return this.notificationService.warning(String(err.error));
+        }
         else
           this.showActivationLink.set(false);
           
@@ -59,5 +69,42 @@ export class Login
   goToActivation()
   {
     this.router.navigate([`/activate-account-user`]);
+  }
+
+
+  togglePassword(): void {
+    this.showPassword = !this.showPassword;
+  }
+
+
+  onMouseMove(event: MouseEvent): void {
+
+    if (!this.loginCard) {
+      return;
+    }
+
+    const card =
+      this.loginCard.nativeElement;
+
+    const rect =
+      card.getBoundingClientRect();
+
+
+    const mouseX =
+      event.clientX - rect.left;
+
+    const mouseY =
+      event.clientY - rect.top;
+
+
+    card.style.setProperty(
+      '--mouse-x',
+      `${mouseX}px`
+    );
+
+    card.style.setProperty(
+      '--mouse-y',
+      `${mouseY}px`
+    );
   }
 }

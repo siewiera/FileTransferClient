@@ -41,11 +41,11 @@ export class Auth
         );
     }
 
-    resendActivationToken(email: string)
+    resendActivationToken(identifier: string)
     {
         return this.http.post(`${this.apiUserUrl}/accountManager/accountActivation`,
             { 
-                email
+                identifier
             },
             {
                 responseType: "text"

@@ -3,11 +3,114 @@
 <!-- <input type="email"
     placehodler="Email"
     [(ngModel)]="email"]> -->
-<input
+<!-- <input
   type="email"
   placeholder="Email"
-  [(ngModel)]="email">
+  [(ngModel)]="identifier">
 
 <button (click)="resendToken()">
     Generuj nowy token
-  </button>
+  </button> -->
+  <div class="auth-page">
+
+  <div
+    #activationCard
+    class="auth-card"
+    (mousemove)="onMouseMove($event)"
+    /* (mouseleave)="onMouseLeave()" */
+  >
+
+    <!-- glass reflection -->
+    <div class="glass-reflection"></div>
+
+    <div class="auth-content">
+
+      <!-- Header -->
+      <div class="auth-header">
+        <div class="auth-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 3a9 9 0 1 0 9 9" />
+            <path d="M12 7v5l3 2" />
+            <path d="M16 3h5v5" />
+          </svg>
+        </div>
+
+        <h1>Aktywacja konta</h1>
+
+        <p>
+          Podaj adres e-mail lub nazwę użytkownika,
+          aby otrzymać nowy kod aktywacyjny.
+        </p>
+      </div>
+
+      <!-- Form -->
+      <form
+        class="auth-form"
+        (ngSubmit)="resendToken()"
+      >
+
+        <div class="input-group">
+
+          <label for="identifier">
+            E-mail lub nazwa użytkownika
+          </label>
+
+          <div class="input-wrapper">
+
+            <svg
+              class="input-icon"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path d="M4 6h16v12H4z" />
+              <path d="m4 7 8 6 8-6" />
+            </svg>
+
+            <input
+              id="identifier"
+              name="identifier"
+              type="text"
+              [(ngModel)]="identifier"
+              placeholder="E-mail lub nazwa użytkownika"
+              autocomplete="username"
+              required
+            />
+
+          </div>
+
+        </div>
+
+        <button
+          type="submit"
+          class="auth-button"
+          [disabled]="!identifier.trim()"
+        >
+          <span>Wyślij kod aktywacyjny</span>
+
+          <svg
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path d="M5 12h14" />
+            <path d="m13 6 6 6-6 6" />
+          </svg>
+        </button>
+
+      </form>
+
+      <!-- Footer -->
+      <div class="auth-footer">
+
+        <span>Masz już aktywne konto?</span>
+
+        <a routerLink="/login">
+          Wróć do logowania
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

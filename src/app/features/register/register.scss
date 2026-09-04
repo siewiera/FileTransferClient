@@ -1,0 +1,714 @@
+// ==========================================
+// VARIABLES
+// ==========================================
+
+$bg-dark: #090712;
+
+$card-bg: rgba(255, 255, 255, 0.055);
+$card-border: rgba(255, 255, 255, 0.12);
+
+$text-primary: #ffffff;
+$text-secondary: rgba(255, 255, 255, 0.62);
+$text-muted: rgba(255, 255, 255, 0.42);
+
+$input-bg: rgba(255, 255, 255, 0.055);
+$input-border: rgba(255, 255, 255, 0.11);
+
+$accent: #9b7cff;
+$accent-light: #b39aff;
+
+$radius-card: 24px;
+$radius-input: 12px;
+
+
+// ==========================================
+// PAGE
+// ==========================================
+
+.register-page {
+  position: relative;
+
+  min-height: 100vh;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 32px 20px;
+
+  box-sizing: border-box;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(125, 82, 255, 0.16),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 80% 75%,
+      rgba(75, 125, 255, 0.12),
+      transparent 35%
+    ),
+    $bg-dark;
+
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  color: $text-primary;
+}
+
+
+// ==========================================
+// BACKGROUND GLOW
+// ==========================================
+
+.register-page::before {
+  content: "";
+
+  position: absolute;
+
+  width: 420px;
+  height: 420px;
+
+  left: -180px;
+  top: 10%;
+
+  border-radius: 50%;
+
+  background: rgba(130, 85, 255, 0.18);
+
+  filter: blur(100px);
+
+  pointer-events: none;
+}
+
+.register-page::after {
+  content: "";
+
+  position: absolute;
+
+  width: 380px;
+  height: 380px;
+
+  right: -160px;
+  bottom: 5%;
+
+  border-radius: 50%;
+
+  background: rgba(60, 120, 255, 0.14);
+
+  filter: blur(100px);
+
+  pointer-events: none;
+}
+
+
+// ==========================================
+// CARD
+// ==========================================
+
+.register-card {
+  position: relative;
+
+  width: 100%;
+  max-width: 440px;
+
+  padding: 38px;
+
+  box-sizing: border-box;
+
+  border-radius: $radius-card;
+
+  background: $card-bg;
+
+  border: 1px solid $card-border;
+
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+  overflow: hidden;
+
+  transform: none;
+
+  isolation: isolate;
+}
+
+
+// ==========================================
+// GLASS REFLECTION
+// ==========================================
+
+.glass-reflection {
+  position: absolute;
+
+  width: 220px;
+  height: 220px;
+
+  left: var(--mouse-x, 50%);
+  top: var(--mouse-y, 50%);
+
+  transform: translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.09) 0%,
+      rgba(255, 255, 255, 0.035) 35%,
+      transparent 70%
+    );
+
+  filter: blur(20px);
+
+  pointer-events: none;
+
+  z-index: -1;
+
+  transition:
+    left 0.12s ease-out,
+    top 0.12s ease-out;
+}
+
+
+// ==========================================
+// HEADER
+// ==========================================
+
+.register-card__header {
+  position: relative;
+
+  margin-bottom: 30px;
+
+  text-align: center;
+
+  z-index: 1;
+}
+
+.register-card__header h1 {
+  margin: 0;
+
+  font-size: 28px;
+  line-height: 1.2;
+
+  font-weight: 650;
+
+  letter-spacing: -0.4px;
+
+  color: $text-primary;
+}
+
+.register-card__header p {
+  margin: 9px 0 0;
+
+  font-size: 14px;
+  line-height: 1.5;
+
+  font-weight: 400;
+
+  color: $text-secondary;
+}
+
+
+// ==========================================
+// FORM
+// ==========================================
+
+.register-form {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+
+  gap: 18px;
+
+  z-index: 1;
+}
+
+
+// ==========================================
+// FORM FIELD
+// ==========================================
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+
+  gap: 8px;
+
+  margin: 0;
+  padding: 0;
+
+  box-sizing: border-box;
+}
+
+.form-field label {
+  display: block;
+
+  width: 100%;
+
+  margin: 0;
+  padding: 0;
+
+  box-sizing: border-box;
+
+  font-family: inherit;
+
+  font-size: 13px;
+  line-height: 18px;
+
+  font-weight: 500;
+
+  color: rgba(255, 255, 255, 0.72);
+}
+
+
+// ==========================================
+// ALL INPUTS
+// ==========================================
+
+.form-field > input,
+.password-wrapper > input {
+  display: block;
+
+  width: 100%;
+  height: 48px;
+
+  min-width: 0;
+
+  margin: 0;
+
+  padding: 0 15px;
+
+  box-sizing: border-box;
+
+  border-radius: $radius-input;
+
+  border: 1px solid $input-border;
+
+  outline: none;
+
+  background: $input-bg;
+
+  color: $text-primary;
+
+  font-family: inherit;
+
+  font-size: 14px;
+  line-height: 48px;
+
+  font-weight: 400;
+
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.form-field > input::placeholder,
+.password-wrapper > input::placeholder {
+  color: rgba(255, 255, 255, 0.28);
+
+  font-weight: 400;
+}
+
+.form-field > input:focus,
+.password-wrapper > input:focus {
+  border-color: rgba(155, 124, 255, 0.65);
+
+  background: rgba(255, 255, 255, 0.075);
+
+  box-shadow:
+    0 0 0 3px rgba(155, 124, 255, 0.08);
+}
+
+
+// ==========================================
+// PASSWORD WRAPPER
+// ==========================================
+
+.password-wrapper {
+  position: relative;
+
+  display: block;
+
+  width: 100%;
+  height: 48px;
+
+  min-width: 0;
+
+  margin: 0;
+  padding: 0;
+
+  box-sizing: border-box;
+}
+
+
+// ==========================================
+// PASSWORD INPUT
+// ==========================================
+
+.password-wrapper > input {
+  padding-right: 48px;
+}
+
+
+// ==========================================
+// PASSWORD TOGGLE
+// ==========================================
+
+.password-toggle {
+  position: absolute;
+
+  top: 50%;
+  right: 12px;
+
+  width: 28px;
+  height: 28px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+  margin: 0;
+
+  box-sizing: border-box;
+
+  transform: translateY(-50%);
+
+  border: 0;
+  outline: none;
+
+  border-radius: 7px;
+
+  background: transparent;
+
+  color: rgba(255, 255, 255, 0.48);
+
+  cursor: pointer;
+
+  z-index: 5;
+
+  transition:
+    color 0.18s ease,
+    background-color 0.18s ease;
+}
+
+.password-toggle:hover {
+  color: rgba(255, 255, 255, 0.82);
+
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.password-toggle:focus-visible {
+  color: $accent-light;
+
+  box-shadow:
+    0 0 0 2px rgba(155, 124, 255, 0.25);
+}
+
+
+// ==========================================
+// EYE SVG
+// ==========================================
+
+.password-toggle svg {
+  display: block;
+
+  width: 17px;
+  height: 17px;
+
+  min-width: 17px;
+  min-height: 17px;
+
+  max-width: 17px;
+  max-height: 17px;
+
+  flex-shrink: 0;
+
+  fill: none;
+
+  stroke: currentColor;
+
+  stroke-width: 1.7;
+
+  stroke-linecap: round;
+  stroke-linejoin: round;
+
+  pointer-events: none;
+}
+
+
+// ==========================================
+// SCREEN READER
+// ==========================================
+
+.sr-only {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+
+  padding: 0;
+  margin: -1px;
+
+  overflow: hidden;
+
+  clip: rect(0, 0, 0, 0);
+
+  white-space: nowrap;
+
+  border: 0;
+}
+
+
+// ==========================================
+// TERMS
+// ==========================================
+
+.terms {
+  display: flex;
+
+  align-items: flex-start;
+
+  width: 100%;
+
+  margin: 2px 0 0;
+  padding: 0;
+
+  box-sizing: border-box;
+
+  gap: 9px;
+
+  cursor: pointer;
+
+  font-family: inherit;
+
+  font-size: 12px;
+  line-height: 18px;
+
+  font-weight: 400;
+
+  color: rgba(255, 255, 255, 0.55);
+
+  // user-select: none;
+}
+
+.terms input {
+  width: 15px;
+  height: 15px;
+
+  flex: 0 0 15px;
+
+  margin: 1px 0 0;
+
+  padding: 0;
+
+  accent-color: $accent;
+
+  cursor: pointer;
+}
+
+.terms span {
+  display: block;
+
+  margin: 0;
+  padding: 0;
+
+  font-family: inherit;
+
+  font-size: 12px;
+  line-height: 18px;
+
+  font-weight: 400;
+
+  color: inherit;
+}
+
+.terms a {
+  font-family: inherit;
+
+  font-size: inherit;
+  line-height: inherit;
+
+  font-weight: 500;
+
+  color: rgba(179, 154, 255, 0.88);
+
+  text-decoration: none;
+}
+
+.terms a:hover {
+  color: $accent-light;
+}
+
+
+// ==========================================
+// REGISTER BUTTON
+// ==========================================
+
+.register-button {
+  display: block;
+
+  width: 100%;
+  height: 48px;
+
+  margin: 2px 0 0;
+  padding: 0 18px;
+
+  box-sizing: border-box;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  border-radius: $radius-input;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(155, 124, 255, 0.95),
+      rgba(112, 83, 205, 0.95)
+    );
+
+  color: #ffffff;
+
+  font-family: inherit;
+
+  font-size: 14px;
+  line-height: 48px;
+
+  font-weight: 600;
+
+  letter-spacing: 0;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 10px 25px rgba(100, 70, 200, 0.20);
+
+  transform: translateY(0);
+
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    filter 0.18s ease;
+}
+
+.register-button:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 14px 30px rgba(100, 70, 200, 0.28);
+
+  filter: brightness(1.05);
+}
+
+.register-button:active {
+  transform: translateY(1px);
+
+  box-shadow:
+    0 7px 18px rgba(100, 70, 200, 0.20);
+}
+
+.register-button:focus-visible {
+  outline: none;
+
+  box-shadow:
+    0 0 0 3px rgba(155, 124, 255, 0.20),
+    0 12px 28px rgba(100, 70, 200, 0.25);
+}
+
+
+// ==========================================
+// FOOTER
+// ==========================================
+
+.register-card__footer {
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 5px;
+
+  margin-top: 26px;
+
+  text-align: center;
+
+  font-family: inherit;
+
+  font-size: 13px;
+  line-height: 18px;
+
+  font-weight: 400;
+
+  color: $text-muted;
+
+  z-index: 1;
+}
+
+.register-card__footer a {
+  font-family: inherit;
+
+  font-size: inherit;
+  line-height: inherit;
+
+  font-weight: 500;
+
+  color: rgba(179, 154, 255, 0.88);
+
+  text-decoration: none;
+
+  transition: color 0.18s ease;
+}
+
+.register-card__footer a:hover {
+  color: $accent-light;
+}
+
+
+// ==========================================
+// MOBILE
+// ==========================================
+
+@media (max-width: 520px) {
+
+  .register-page {
+    padding: 20px 14px;
+  }
+
+  .register-card {
+    padding: 30px 22px;
+
+    border-radius: 20px;
+  }
+
+  .register-card__header h1 {
+    font-size: 25px;
+  }
+
+  .terms {
+    font-size: 11px;
+  }
+
+  .terms span {
+    font-size: 11px;
+  }
+}

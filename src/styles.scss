@@ -5,6 +5,7 @@
 // custom components at https://material.angular.dev/guide/theming
 @use '@angular/material' as mat;
 
+
 html {
   height: 100%;
   @include mat.theme(
@@ -42,6 +43,11 @@ $error-color: #c62828;
 $warning-color: #ed6c02;
 $info-color: #1565c0;
 
+$success-shadow: #2e7d32ba;
+$error-shadow: #c62828ba;
+$warning-shadow: #ed6c02ba;
+$info-shadow: #1565c0ba;
+
 $success-color-background: #2e7d3281;
 $error-color-background: #c6282879;
 $warning-color-background: #ed6c027c;
@@ -52,26 +58,74 @@ $background-noticifation: white;
 
 .mat-mdc-snack-bar-container.notification-success
   .mat-mdc-snackbar-surface {
-  background-color: $success-color !important;
-  color: #ffffff !important;
+  // background-color: $success-color !important;
+  // color: #ffffff !important;
+
+  position: relative;
+  box-sizing: border-box;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.055);
+  border: 1px solid $success-color;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow: 0 0px 44px $success-shadow, inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  transform: none;
+  isolation: isolate;
 }
 
 .mat-mdc-snack-bar-container.notification-error
   .mat-mdc-snackbar-surface {
-  background-color: $error-color !important;
-  color: #ffffff !important;
+  // background-color: $error-color !important;
+  // color: #ffffff !important;
+
+  position: relative;
+  box-sizing: border-box;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.055);
+  border: 1px solid $error-color;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow: 0 0px 44px $error-shadow, inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  transform: none;
+  isolation: isolate;
 }
 
 .mat-mdc-snack-bar-container.notification-warning
   .mat-mdc-snackbar-surface {
-  background-color: $warning-color !important;
-  color: #000000 !important;
+  // background-color: $warning-color !important;
+  // color: #000000 !important;
+
+  position: relative;
+  box-sizing: border-box;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.055);
+  border: 1px solid $warning-color;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow: 0 0px 44px $warning-shadow, inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  transform: none;
+  isolation: isolate;
 }
 
 .mat-mdc-snack-bar-container.notification-info
   .mat-mdc-snackbar-surface {
-  background-color: $info-color !important;
-  color: #ffffff !important;
+  // background-color: $info-color !important;
+  // color: #ffffff !important;
+
+  position: relative;
+  box-sizing: border-box;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.055);
+  border: 1px solid $info-color;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow: 0 0px 44px $info-shadow, inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  transform: none;
+  isolation: isolate;
 }
 
 .mat-mdc-snack-bar-container.notification-success,
@@ -86,5 +140,6 @@ $background-noticifation: white;
     color: #ffffff !important;
   }
 }
+
 
 /* You can add global styles to this file, and also import other style files */

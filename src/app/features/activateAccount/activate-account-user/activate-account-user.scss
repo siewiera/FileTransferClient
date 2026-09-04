@@ -1,0 +1,633 @@
+// ==========================================
+// VARIABLES — TAKIE SAME JAK LOGIN
+// ==========================================
+
+$bg-dark: #090712;
+
+$card-bg: rgba(255, 255, 255, 0.055);
+$card-border: rgba(255, 255, 255, 0.12);
+
+$text-primary: #ffffff;
+$text-secondary: rgba(255, 255, 255, 0.62);
+$text-muted: rgba(255, 255, 255, 0.42);
+
+$input-bg: rgba(255, 255, 255, 0.055);
+$input-border: rgba(255, 255, 255, 0.11);
+
+$accent: #9b7cff;
+$accent-light: #b39aff;
+
+$radius-card: 24px;
+$radius-input: 12px;
+
+
+// ==========================================
+// HOST
+// ==========================================
+
+:host {
+  display: block;
+  width: 100%;
+  min-height: 100vh;
+}
+
+
+// ==========================================
+// PAGE
+// ==========================================
+
+.auth-page {
+  position: relative;
+
+  min-height: 100vh;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 32px 20px;
+
+  box-sizing: border-box;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(125, 82, 255, 0.16),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 80% 75%,
+      rgba(75, 125, 255, 0.12),
+      transparent 35%
+    ),
+    $bg-dark;
+
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  color: $text-primary;
+}
+
+
+// ==========================================
+// BACKGROUND GLOW
+// ==========================================
+
+.auth-page::before {
+  content: "";
+
+  position: absolute;
+
+  width: 420px;
+  height: 420px;
+
+  left: -180px;
+  top: 10%;
+
+  border-radius: 50%;
+
+  background: rgba(130, 85, 255, 0.18);
+
+  filter: blur(100px);
+
+  pointer-events: none;
+}
+
+.auth-page::after {
+  content: "";
+
+  position: absolute;
+
+  width: 380px;
+  height: 380px;
+
+  right: -160px;
+  bottom: 5%;
+
+  border-radius: 50%;
+
+  background: rgba(60, 120, 255, 0.14);
+
+  filter: blur(100px);
+
+  pointer-events: none;
+}
+
+
+// ==========================================
+// CARD
+// ==========================================
+
+.auth-card {
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+
+  position: relative;
+
+  width: 100%;
+  max-width: 420px;
+
+  padding: 38px;
+
+  box-sizing: border-box;
+
+  border-radius: $radius-card;
+
+  background: $card-bg;
+
+  border: 1px solid $card-border;
+
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+  overflow: hidden;
+
+  transform: none;
+
+  isolation: isolate;
+}
+
+
+// ==========================================
+// GLASS REFLECTION
+// ==========================================
+
+.glass-reflection {
+  position: absolute;
+
+  width: 220px;
+  height: 220px;
+
+  left: var(--mouse-x);
+  top: var(--mouse-y);
+
+  transform: translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.09) 0%,
+      rgba(255, 255, 255, 0.035) 35%,
+      transparent 70%
+    );
+
+  filter: blur(20px);
+
+  pointer-events: none;
+
+  z-index: -1;
+
+  transition:
+    left 0.12s ease-out,
+    top 0.12s ease-out;
+}
+
+
+// ==========================================
+// CONTENT
+// ==========================================
+
+.auth-content {
+  position: relative;
+  z-index: 1;
+}
+
+
+// ==========================================
+// HEADER
+// ==========================================
+
+.auth-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-bottom: 30px;
+
+  text-align: center;
+}
+
+
+// ==========================================
+// ACTIVATION ICON
+// ==========================================
+
+.auth-icon {
+  width: 46px;
+  height: 46px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 18px;
+
+  border-radius: 14px;
+
+  border: 1px solid rgba(155, 124, 255, 0.16);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(155, 124, 255, 0.10),
+      rgba(255, 255, 255, 0.025)
+    );
+
+  color: rgba(179, 154, 255, 0.78);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.14);
+}
+
+.auth-icon svg {
+  width: 22px;
+  height: 22px;
+
+  fill: none;
+
+  stroke: currentColor;
+
+  stroke-width: 1.6;
+
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+
+// ==========================================
+// HEADER TITLE
+// ==========================================
+
+.auth-header h1 {
+  margin: 0;
+
+  font-size: 28px;
+  line-height: 1.2;
+
+  font-weight: 600;
+
+  letter-spacing: -0.4px;
+
+  color: $text-primary;
+}
+
+
+// ==========================================
+// HEADER DESCRIPTION
+// ==========================================
+
+.auth-header p {
+  margin: 9px 0 0;
+
+  max-width: 330px;
+
+  font-size: 14px;
+  line-height: 1.5;
+
+  font-weight: 400;
+
+  color: $text-secondary;
+}
+
+
+// ==========================================
+// FORM
+// ==========================================
+
+.auth-form {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 20px;
+
+  z-index: 1;
+}
+
+
+// ==========================================
+// INPUT GROUP
+// ==========================================
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+.input-group label {
+  display: block;
+
+  padding-left: 0;
+
+  font-size: 13px;
+  line-height: 1.4;
+
+  font-weight: 500;
+
+  color: rgba(255, 255, 255, 0.72);
+}
+
+
+// ==========================================
+// INPUT WRAPPER
+// ==========================================
+
+.input-wrapper {
+  position: relative;
+
+  width: 100%;
+}
+
+
+// ==========================================
+// INPUT ICON
+// ==========================================
+
+.input-icon {
+  position: absolute;
+
+  left: 15px;
+  top: 50%;
+
+  width: 17px;
+  height: 17px;
+
+  transform: translateY(-50%);
+
+  pointer-events: none;
+
+  fill: none;
+
+  stroke: rgba(255, 255, 255, 0.42);
+
+  stroke-width: 1.7;
+
+  stroke-linecap: round;
+  stroke-linejoin: round;
+
+  transition: stroke 0.2s ease;
+}
+
+
+// ==========================================
+// INPUT
+// ==========================================
+
+.input-wrapper input {
+  width: 100%;
+  height: 48px;
+
+  padding: 0 15px 0 44px;
+
+  box-sizing: border-box;
+
+  border-radius: $radius-input;
+
+  border: 1px solid $input-border;
+
+  outline: none;
+
+  background: $input-bg;
+
+  color: $text-primary;
+
+  font-family: inherit;
+
+  font-size: 14px;
+  font-weight: 400;
+
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.input-wrapper input::placeholder {
+  color: rgba(255, 255, 255, 0.28);
+}
+
+.input-wrapper input:hover {
+  background: rgba(255, 255, 255, 0.065);
+}
+
+.input-wrapper input:focus {
+  border-color: rgba(155, 124, 255, 0.65);
+
+  background: rgba(255, 255, 255, 0.075);
+
+  box-shadow:
+    0 0 0 3px rgba(155, 124, 255, 0.08);
+}
+
+.input-wrapper:focus-within .input-icon {
+  stroke: rgba(179, 154, 255, 0.75);
+}
+
+
+// ==========================================
+// BUTTON
+// ==========================================
+
+.auth-button {
+  width: 100%;
+  height: 48px;
+
+  margin-top: 2px;
+
+  padding: 0 18px;
+
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 9px;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  border-radius: $radius-input;
+
+  outline: none;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(155, 124, 255, 0.95),
+      rgba(112, 83, 205, 0.95)
+    );
+
+  color: #ffffff;
+
+  font-family: inherit;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 10px 25px rgba(100, 70, 200, 0.20);
+
+  transform: translateY(0);
+
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    filter 0.18s ease;
+}
+
+
+// ==========================================
+// BUTTON SVG
+// ==========================================
+
+.auth-button svg {
+  width: 15px;
+  height: 15px;
+
+  fill: none;
+
+  stroke: currentColor;
+
+  stroke-width: 1.8;
+
+  stroke-linecap: round;
+  stroke-linejoin: round;
+
+  transition: transform 0.18s ease;
+}
+
+
+// ==========================================
+// BUTTON HOVER
+// ==========================================
+
+.auth-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 14px 30px rgba(100, 70, 200, 0.28);
+
+  filter: brightness(1.05);
+}
+
+.auth-button:hover:not(:disabled) svg {
+  transform: translateX(2px);
+}
+
+
+// ==========================================
+// BUTTON ACTIVE
+// ==========================================
+
+.auth-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+
+// ==========================================
+// BUTTON FOCUS
+// ==========================================
+
+.auth-button:focus-visible {
+  outline: none;
+
+  box-shadow:
+    0 0 0 3px rgba(155, 124, 255, 0.20),
+    0 12px 28px rgba(100, 70, 200, 0.25);
+}
+
+
+// ==========================================
+// BUTTON DISABLED
+// ==========================================
+
+.auth-button:disabled {
+  opacity: 0.45;
+
+  cursor: not-allowed;
+
+  box-shadow: none;
+}
+
+
+// ==========================================
+// FOOTER
+// ==========================================
+
+.auth-footer {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 6px;
+
+  margin-top: 26px;
+
+  font-size: 13px;
+  line-height: 18px;
+
+  color: $text-muted;
+
+  z-index: 1;
+}
+
+.auth-footer a {
+  color: rgba(179, 154, 255, 0.88);
+
+  font-weight: 500;
+
+  text-decoration: none;
+
+  transition: color 0.18s ease;
+}
+
+.auth-footer a:hover {
+  color: $accent-light;
+}
+
+
+// ==========================================
+// MOBILE
+// ==========================================
+
+@media (max-width: 520px) {
+
+  .auth-page {
+    padding: 20px 14px;
+  }
+
+  .auth-card {
+    padding: 30px 22px;
+
+    border-radius: 20px;
+  }
+
+  .auth-header h1 {
+    font-size: 25px;
+  }
+
+  .auth-header p {
+    font-size: 13px;
+  }
+}

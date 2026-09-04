@@ -9,7 +9,7 @@ export class NotyficationService
 
   success(message: string): void {
     this.snackBar.open(message, 'OK', {
-      duration: 3000,
+      // duration: 3000,
       horizontalPosition: 'right',
       verticalPosition: 'top',
       panelClass: ['notification-success']
@@ -18,7 +18,7 @@ export class NotyficationService
 
   error(message: string): void {
     this.snackBar.open(message, 'OK', {
-      duration: 5000,
+      // duration: 5000,
       horizontalPosition: 'right',
       verticalPosition: 'top',
       panelClass: ['notification-error']
@@ -27,7 +27,7 @@ export class NotyficationService
 
   warning(message: string): void {
     this.snackBar.open(message, 'OK', {
-      duration: 4000,
+      // duration: 4000,
       horizontalPosition: 'right',
       verticalPosition: 'top',
       panelClass: ['notification-warning']
@@ -36,7 +36,7 @@ export class NotyficationService
 
   info(message: string): void {
     this.snackBar.open(message, 'OK', {
-      duration: 3000,
+      // duration: 3000,
       horizontalPosition: 'right',
       verticalPosition: 'top',
       panelClass: ['notification-info']

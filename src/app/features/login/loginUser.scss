@@ -1,0 +1,962 @@
+// ==========================================
+// VARIABLES
+// ==========================================
+
+$bg-dark: #090712;
+$card-bg: rgba(255, 255, 255, 0.055);
+$card-border: rgba(255, 255, 255, 0.12);
+
+$text-primary: #ffffff;
+$text-secondary: rgba(255, 255, 255, 0.62);
+$text-muted: rgba(255, 255, 255, 0.42);
+
+$input-bg: rgba(255, 255, 255, 0.055);
+$input-border: rgba(255, 255, 255, 0.11);
+
+$accent: #9b7cff;
+$accent-light: #b39aff;
+
+$radius-card: 24px;
+$radius-input: 12px;
+
+
+// ==========================================
+// PAGE
+// ==========================================
+
+.login-page {
+  position: relative;
+
+  min-height: 100vh;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 32px 20px;
+
+  box-sizing: border-box;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(125, 82, 255, 0.16),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 80% 75%,
+      rgba(75, 125, 255, 0.12),
+      transparent 35%
+    ),
+    $bg-dark;
+
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  color: $text-primary;
+}
+
+
+// ==========================================
+// BACKGROUND GLOW
+// ==========================================
+
+.login-page::before {
+  content: "";
+
+  position: absolute;
+
+  width: 420px;
+  height: 420px;
+
+  left: -180px;
+  top: 10%;
+
+  border-radius: 50%;
+
+  background: rgba(130, 85, 255, 0.18);
+
+  filter: blur(100px);
+
+  pointer-events: none;
+}
+
+.login-page::after {
+  content: "";
+
+  position: absolute;
+
+  width: 380px;
+  height: 380px;
+
+  right: -160px;
+  bottom: 5%;
+
+  border-radius: 50%;
+
+  background: rgba(60, 120, 255, 0.14);
+
+  filter: blur(100px);
+
+  pointer-events: none;
+}
+
+
+// ==========================================
+// CARD
+// ==========================================
+
+.login-card {
+  position: relative;
+
+  width: 100%;
+  max-width: 420px;
+
+  padding: 38px;
+
+  box-sizing: border-box;
+
+  border-radius: $radius-card;
+
+  background: $card-bg;
+
+  border: 1px solid $card-border;
+
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+  overflow: hidden;
+
+  // Bardzo ważne:
+  // brak transform na karcie.
+  transform: none;
+
+  isolation: isolate;
+}
+
+
+// ==========================================
+// GLASS REFLECTION
+// ==========================================
+
+.glass-reflection {
+  position: absolute;
+
+  width: 220px;
+  height: 220px;
+
+  left: var(--mouse-x, 50%);
+  top: var(--mouse-y, 50%);
+
+  transform: translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.09) 0%,
+      rgba(255, 255, 255, 0.035) 35%,
+      transparent 70%
+    );
+
+  filter: blur(20px);
+
+  pointer-events: none;
+
+  z-index: -1;
+
+  transition:
+    left 0.12s ease-out,
+    top 0.12s ease-out;
+}
+
+
+// ==========================================
+// HEADER
+// ==========================================
+
+.login-card__header {
+  position: relative;
+
+  margin-bottom: 30px;
+
+  text-align: center;
+
+  z-index: 1;
+}
+
+.login-card__header h1 {
+  margin: 0;
+
+  font-size: 28px;
+  line-height: 1.2;
+
+  font-weight: 650;
+
+  letter-spacing: -0.4px;
+
+  color: $text-primary;
+}
+
+.login-card__header p {
+  margin: 9px 0 0;
+
+  font-size: 14px;
+  line-height: 1.5;
+
+  font-weight: 400;
+
+  color: $text-secondary;
+}
+
+
+// ==========================================
+// FORM
+// ==========================================
+
+.login-form {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 20px;
+
+  z-index: 1;
+}
+
+
+// ==========================================
+// FIELD
+// ==========================================
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+.form-field label {
+  display: block;
+
+  margin: 0;
+
+  font-size: 13px;
+  line-height: 1.4;
+
+  font-weight: 500;
+
+  letter-spacing: 0;
+
+  color: rgba(255, 255, 255, 0.72);
+}
+
+
+// ==========================================
+// INPUT
+// ==========================================
+
+.form-field input[type="text"],
+.form-field input[type="password"] {
+  width: 100%;
+  height: 48px;
+
+  padding: 0 15px;
+
+  box-sizing: border-box;
+
+  border-radius: $radius-input;
+
+  border: 1px solid $input-border;
+
+  outline: none;
+
+  background: $input-bg;
+
+  color: $text-primary;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 400;
+
+  line-height: 48px;
+
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.form-field input::placeholder {
+  color: rgba(255, 255, 255, 0.28);
+
+  font-weight: 400;
+}
+
+.form-field input:focus {
+  border-color: rgba(155, 124, 255, 0.65);
+
+  background: rgba(255, 255, 255, 0.075);
+
+  box-shadow:
+    0 0 0 3px rgba(155, 124, 255, 0.08);
+}
+
+
+// ==========================================
+// PASSWORD WRAPPER
+// ==========================================
+
+.password-wrapper {
+  position: relative;
+
+  width: 100%;
+  height: 48px;
+
+  flex-shrink: 0;
+}
+
+
+// ==========================================
+// PASSWORD INPUT
+// ==========================================
+
+.password-wrapper input {
+  width: 100%;
+
+  padding-right: 48px !important;
+}
+
+
+// ==========================================
+// PASSWORD TOGGLE
+// ==========================================
+
+.password-toggle {
+  position: absolute;
+
+  top: 50%;
+  right: 12px;
+
+  width: 28px;
+  height: 28px;
+
+  padding: 0;
+  margin: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transform: translateY(-50%);
+
+  border: 0;
+  outline: none;
+
+  border-radius: 7px;
+
+  background: transparent;
+
+  color: rgba(255, 255, 255, 0.48);
+
+  cursor: pointer;
+
+  z-index: 5;
+
+  box-sizing: border-box;
+
+  transition:
+    color 0.18s ease,
+    background-color 0.18s ease;
+}
+
+.password-toggle:hover {
+  color: rgba(255, 255, 255, 0.82);
+
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.password-toggle:focus-visible {
+  color: $accent-light;
+
+  box-shadow:
+    0 0 0 2px rgba(155, 124, 255, 0.25);
+}
+
+
+// ==========================================
+// EYE ICON
+// ==========================================
+
+.password-toggle svg {
+  display: block;
+
+  width: 17px;
+  height: 17px;
+
+  min-width: 17px;
+  min-height: 17px;
+
+  max-width: 17px;
+  max-height: 17px;
+
+  fill: none;
+
+  stroke: currentColor;
+
+  stroke-width: 1.7;
+
+  stroke-linecap: round;
+  stroke-linejoin: round;
+
+  pointer-events: none;
+
+  flex-shrink: 0;
+}
+
+
+// ==========================================
+// SCREEN READER TEXT
+// ==========================================
+
+.sr-only {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+
+  padding: 0;
+  margin: -1px;
+
+  overflow: hidden;
+
+  clip: rect(0, 0, 0, 0);
+
+  white-space: nowrap;
+
+  border: 0;
+}
+
+
+// ==========================================
+// LOGIN OPTIONS
+// ==========================================
+
+.login-options {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 12px;
+
+  margin-top: -2px;
+}
+
+
+// ==========================================
+// REMEMBER ME
+// ==========================================
+
+.remember-me {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  margin: 0;
+
+  cursor: pointer;
+
+  font-family: inherit;
+
+  font-size: 13px;
+  line-height: 18px;
+
+  font-weight: 400;
+
+  letter-spacing: 0;
+
+  color: rgba(255, 255, 255, 0.58);
+
+  // user-select: none;
+}
+
+.remember-me span {
+  display: inline-block;
+
+  margin: 0;
+
+  font-family: inherit;
+
+  font-size: 13px;
+  line-height: 18px;
+
+  font-weight: 400;
+
+  color: inherit;
+}
+
+.remember-me input {
+  width: 15px;
+  height: 15px;
+
+  margin: 0;
+
+  flex-shrink: 0;
+
+  accent-color: $accent;
+
+  cursor: pointer;
+}
+
+
+// ==========================================
+// FORGOT PASSWORD
+// ==========================================
+
+.forgot-password {
+  font-family: inherit;
+
+  font-size: 13px;
+  line-height: 18px;
+
+  font-weight: 400;
+
+  color: rgba(179, 154, 255, 0.82);
+
+  text-decoration: none;
+
+  white-space: nowrap;
+
+  transition:
+    color 0.18s ease;
+}
+
+.forgot-password:hover {
+  color: $accent-light;
+}
+
+
+// ==========================================
+// LOGIN BUTTON
+// ==========================================
+
+.login-button {
+  width: 100%;
+  height: 48px;
+
+  margin-top: 2px;
+
+  padding: 0 18px;
+
+  box-sizing: border-box;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  border-radius: $radius-input;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(155, 124, 255, 0.95),
+      rgba(112, 83, 205, 0.95)
+    );
+
+  color: #ffffff;
+
+  font-family: inherit;
+
+  font-size: 14px;
+  line-height: 48px;
+
+  font-weight: 600;
+
+  letter-spacing: 0;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 10px 25px rgba(100, 70, 200, 0.20);
+
+  // Tylko przycisk może się lekko przesunąć.
+  // Nie używamy scale.
+  transform: translateY(0);
+
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    filter 0.18s ease;
+}
+
+.login-button:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 14px 30px rgba(100, 70, 200, 0.28);
+
+  filter: brightness(1.05);
+}
+
+.login-button:active {
+  transform: translateY(1px);
+
+  box-shadow:
+    0 7px 18px rgba(100, 70, 200, 0.20);
+}
+
+.login-button:focus-visible {
+  outline: none;
+
+  box-shadow:
+    0 0 0 3px rgba(155, 124, 255, 0.20),
+    0 12px 28px rgba(100, 70, 200, 0.25);
+}
+
+
+// ==========================================
+// FOOTER
+// ==========================================
+
+.login-card__footer {
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 5px;
+
+  margin-top: 26px;
+
+  text-align: center;
+
+  font-family: inherit;
+
+  font-size: 13px;
+  line-height: 18px;
+
+  font-weight: 400;
+
+  color: $text-muted;
+
+  z-index: 1;
+}
+
+.login-card__footer a {
+  font-family: inherit;
+
+  font-size: inherit;
+  line-height: inherit;
+
+  font-weight: 500;
+
+  color: rgba(179, 154, 255, 0.88);
+
+  text-decoration: none;
+
+  transition:
+    color 0.18s ease;
+}
+
+.login-card__footer a:hover {
+  color: $accent-light;
+}
+
+
+// ==========================================
+// MOBILE
+// ==========================================
+
+@media (max-width: 520px) {
+
+  .login-page {
+    padding: 20px 14px;
+  }
+
+  .login-card {
+    padding: 30px 22px;
+
+    border-radius: 20px;
+  }
+
+  .login-card__header h1 {
+    font-size: 25px;
+  }
+
+  .login-options {
+    align-items: flex-start;
+  }
+
+  .remember-me {
+    flex-shrink: 0;
+  }
+
+  .forgot-password {
+    text-align: right;
+  }
+}
+
+/* ==========================================
+   ACTIVATION HINT
+   ========================================== */
+
+.activation-hint {
+  position: relative;
+
+  display: flex;
+  align-items: flex-start;
+
+  width: 100%;
+
+  margin-top: -4px;
+  padding: 14px 15px;
+
+  box-sizing: border-box;
+
+  gap: 12px;
+
+  border-radius: 13px;
+
+  border: 1px solid rgba(179, 154, 255, 0.14);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(155, 124, 255, 0.075),
+      rgba(255, 255, 255, 0.025)
+    );
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.045),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.10);
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  overflow: hidden;
+}
+
+
+/* subtelny fioletowy akcent po lewej */
+
+.activation-hint::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  top: 10px;
+  bottom: 10px;
+
+  width: 2px;
+
+  border-radius: 0 2px 2px 0;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(179, 154, 255, 0.15),
+      rgba(155, 124, 255, 0.65),
+      rgba(179, 154, 255, 0.15)
+    );
+
+  box-shadow:
+    0 0 10px rgba(155, 124, 255, 0.18);
+}
+
+
+/* ==========================================
+   ICON
+   ========================================== */
+
+.activation-hint__icon {
+  width: 30px;
+  height: 30px;
+
+  flex: 0 0 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 1px;
+
+  border-radius: 9px;
+
+  background: rgba(155, 124, 255, 0.08);
+
+  border: 1px solid rgba(179, 154, 255, 0.10);
+
+  color: rgba(179, 154, 255, 0.72);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.activation-hint__icon svg {
+  width: 16px;
+  height: 16px;
+
+  fill: none;
+
+  stroke: currentColor;
+
+  stroke-width: 1.7;
+
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+
+/* ==========================================
+   CONTENT
+   ========================================== */
+
+.activation-hint__content {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+
+  gap: 5px;
+}
+
+
+/* ==========================================
+   TITLE
+   ========================================== */
+
+.activation-hint__title {
+  font-size: 12px;
+  line-height: 17px;
+
+  font-weight: 600;
+
+  color: rgba(255, 255, 255, 0.62);
+
+  letter-spacing: 0.1px;
+
+  text-shadow:
+    1px 1px 0 rgba(255, 255, 255, 0.06),
+    -1px -1px 0 rgba(0, 0, 0, 0.38);
+}
+
+
+/* ==========================================
+   DESCRIPTION
+   ========================================== */
+
+.activation-hint__text {
+  font-size: 12px;
+  line-height: 17px;
+
+  font-weight: 400;
+
+  color: rgba(255, 255, 255, 0.38);
+}
+
+
+/* ==========================================
+   ACTIVATION BUTTON
+   ========================================== */
+
+.activation-link {
+  display: inline-flex;
+  align-items: center;
+
+  align-self: flex-start;
+
+  gap: 7px;
+
+  margin: 4px 0 0;
+  padding: 0;
+
+  border: 0;
+  outline: none;
+
+  background: transparent;
+
+  color: rgba(179, 154, 255, 0.78);
+
+  font-family: inherit;
+
+  font-size: 12px;
+  line-height: 18px;
+
+  font-weight: 550;
+
+  cursor: pointer;
+
+  transition:
+    color 0.18s ease,
+    transform 0.18s ease;
+}
+
+.activation-link svg {
+  width: 14px;
+  height: 14px;
+
+  flex: 0 0 14px;
+
+  fill: none;
+
+  stroke: currentColor;
+
+  stroke-width: 1.8;
+
+  stroke-linecap: round;
+  stroke-linejoin: round;
+
+  transition:
+    transform 0.18s ease;
+}
+
+.activation-link:hover {
+  color: rgba(210, 198, 255, 0.98);
+
+  transform: translateX(2px);
+}
+
+.activation-link:hover svg {
+  transform: translateX(2px);
+}
+
+.activation-link:focus-visible {
+  border-radius: 4px;
+
+  box-shadow:
+    0 0 0 2px rgba(155, 124, 255, 0.20);
+}
+
+
+/* ==========================================
+   MOBILE
+   ========================================== */
+
+@media (max-width: 520px) {
+
+  .activation-hint {
+    padding: 13px;
+  }
+
+  .activation-hint__text,
+  .activation-link {
+    font-size: 11px;
+  }
+}
